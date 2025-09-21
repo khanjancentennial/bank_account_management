@@ -1,0 +1,55 @@
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# IDE Specific
+.idea/
+.project
+.classpath
+.settings/
+.vscode/
+
+# Environment and Sensitive Files
+# Excludes the Docker Compose file for local setup
+docker-compose.yml
+
+# Excludes application-level properties that might contain secrets
+application.properties
+test.properties
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Log Files
+*.log
+logs/
+
+# STS (Spring Tool Suite)
+.apt_generated
+.springBeans
+.factorypath
+
+# Eclipse
+.sts4-cache/
+
+# JRebel
+.jrebel/
+
+# Miscellaneous
+*.jar
+*.war
+*.zip
+*.tar
+*.rar
+
+# Unit Test/Integration Test Reports
+/target/site
+/target/surefire-reports
+/target/failsafe-reports
