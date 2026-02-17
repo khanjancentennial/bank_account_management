@@ -1,5 +1,9 @@
 # Maven
 target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 
 # Gradle
 .gradle/
@@ -7,6 +11,9 @@ build/
 
 # IDE Specific
 .idea/
+*.iws
+*.iml
+*.ipr
 .project
 .classpath
 .settings/
@@ -42,6 +49,10 @@ logs/
 # JRebel
 .jrebel/
 
+# Environment variables - NEVER commit!
+.env
+.env.exampleß
+
 # Miscellaneous
 *.jar
 *.war
@@ -53,3 +64,7 @@ logs/
 /target/site
 /target/surefire-reports
 /target/failsafe-reports
+
+
+# Database
+*.db
