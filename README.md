@@ -20,13 +20,13 @@ It consumes transaction events from Kafka and maintains account balances with fu
 
 **Backend Framework:**
 - Java 17
-- Spring Boot 3.2.0
+- Spring Boot 3.5.5
 - Spring Security
 - Spring Data JPA
 - Spring Kafka
 
 **Database:**
-- PostgreSQL 15
+- PostgreSQL
 - HikariCP (Connection Pooling)
 
 **Messaging:**
