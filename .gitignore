@@ -52,6 +52,11 @@ logs/
 # Environment variables - NEVER commit!
 .env
 .env.example
+.env.*
+*.env
+.env.production
+.env.development
+.env.local
 
 # Miscellaneous
 *.jar
@@ -68,3 +73,10 @@ logs/
 
 # Database
 *.db
+
+# AWS credentials
+*.pem
+account-ms-key.pem
+
+# Docker
+docker-compose.override.yml

@@ -1,0 +1,18 @@
+# Use Java 17 runtime (Alpine for smaller size)
+FROM eclipse-temurin:17-jre-alpine
+
+# Set working directory inside container
+WORKDIR /app
+
+# Copy the compiled JAR file from target folder
+COPY target/*.jar app.jar
+
+# Expose port 8080 to outside world
+EXPOSE 8080
+
+# Health check - verifies app is running
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+
+# Command to run when container starts
+ENTRYPOINT ["java", "-jar", "app.jar"]

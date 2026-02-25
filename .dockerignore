@@ -1,0 +1,41 @@
+# Exclude these from Docker image
+
+# Maven
+target/
+!target/*.jar
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.example
+.env.*
+*.env
+
+# Documentation
+*.md
+README.md
+LICENSE
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test files
+src/test/
