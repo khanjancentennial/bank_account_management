@@ -80,3 +80,10 @@ account-ms-key.pem
 
 # Docker
 docker-compose.override.yml
+
+
+#aws scripts
+*.sh
+deploy-to-aws.sh
+delete-aws.sh
+user-data.shs

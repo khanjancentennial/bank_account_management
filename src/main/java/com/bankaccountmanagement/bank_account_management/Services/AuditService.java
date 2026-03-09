@@ -100,6 +100,48 @@ private final AuditLogRepository auditLogRepository;
         }
     }
 
+    @Async
+public void logSuccessfulLogin(Long userId, String username, String ipAddress, String userAgent) {
+    try {
+        AuditLog auditLog = AuditLog.builder()
+                .userId(userId)
+                .username(username)
+                .action("LOGIN")
+                .status("SUCCESS")
+                .details("Successful login")
+                .ipAddress(ipAddress)
+                .userAgent(userAgent)
+                .build();
+        
+        auditLogRepository.save(auditLog);
+        logger.log(Level.INFO, "Successful login: {0} from IP: {1}", 
+            new Object[]{username, ipAddress});
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, "Failed to log successful login: {0}", e.getMessage());
+    }
+}
+
+@Async
+public void logFailedLogin(String username, String ipAddress, String userAgent, String reason) {
+    try {
+        AuditLog auditLog = AuditLog.builder()
+                .username(username)
+                .action("LOGIN")
+                .status("FAILURE")
+                .details(reason)
+                .errorMessage(reason)
+                .ipAddress(ipAddress)
+                .userAgent(userAgent)
+                .build();
+        
+        auditLogRepository.save(auditLog);
+        logger.log(Level.WARNING, "Failed login: {0} from IP: {1} - Reason: {2}", 
+            new Object[]{username, ipAddress, reason});
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, "Failed to log failed login: {0}", e.getMessage());
+    }
+}
+
     /**
      * Extract real client IP address (handles proxy headers)
      */

@@ -93,7 +93,6 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 
     private final JwtAuth jwtAuthFilter;
-    private final RateLimitingFilter rateLimitingFilter;
     private final SecurityHeadersFilter securityHeadersFilter;
     private final @Lazy UserService userDetailsService;
 
@@ -102,7 +101,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+                .requestMatchers("/api/auth/register", "/api/auth/login", "/actuator/health").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/audit/**").hasRole("AUDITOR")
                 .anyRequest().authenticated()
@@ -112,7 +111,6 @@ public class SecurityConfig {
             )
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(securityHeadersFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
