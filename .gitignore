@@ -24,7 +24,7 @@ build/
 # docker-compose.yml
 
 # Excludes application-level properties that might contain secrets
-application.properties
+# application.properties
 test.properties
 
 # MacOS
