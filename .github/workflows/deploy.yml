@@ -117,7 +117,7 @@ jobs:
             docker-compose up -d
             
             echo "⏳ Waiting for application to start..."
-            sleep 45
+            sleep 120
             
             echo "📊 Container status:"
             docker-compose ps
@@ -131,8 +131,8 @@ jobs:
       # ============================================
       - name: 🧪 Health check
         run: |
-          echo "⏳ Waiting 15 seconds before health check..."
-          sleep 15
+          echo "⏳ Waiting 45 seconds before health check..."
+          sleep 45
           
           echo "🔍 Testing health endpoint..."
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.EC2_IP }}:8080/actuator/health)
